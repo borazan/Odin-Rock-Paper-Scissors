@@ -39,9 +39,12 @@ body.appendChild(buttonContainer);
 const outputDiv = document.createElement("div");
 outputDiv.style.fontSize = "40px";
 outputDiv.innerText = "Click a button to start";
+outputDiv.style.textAlign = "center";
 body.appendChild(outputDiv);
 
 const scoreDiv = document.createElement("div");
+scoreDiv.style.display = "flex";
+scoreDiv.style.justifyContent = "space-around";
 scoreDiv.style.fontSize = "60px";
 const playerScoreDiv = document.createElement("div");
 playerScoreDiv.innerHTML = playerScore;
@@ -136,9 +139,7 @@ function displayWinner(winner) {
   scoreDiv.appendChild(playAgain);
 }
 
-function game() {}
-
-function probability() {
+const probability = () => {
   let result = [];
   let countScissors = 0;
   let countPaper = 0;
