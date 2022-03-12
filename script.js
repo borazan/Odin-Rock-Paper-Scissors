@@ -90,11 +90,14 @@ function playerWon() {
   if (playerScore < 5) {
     playerScore++;
     playerScoreDiv.innerHTML = playerScore;
+  }
 }
 
 function computerWon() {
-  computerScore++;
-  computerScoreDiv.innerHTML = computerScore;
+  if (computerScore < 5) {
+    computerScore++;
+    computerScoreDiv.innerHTML = computerScore;
+  }
 }
 
 function game() {}
