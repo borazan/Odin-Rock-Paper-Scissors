@@ -1,21 +1,26 @@
 var playerScore = 0;
 var computerScore = 0;
 
-const rockButton = document.createElement("button");
+const rockButton = document.createElement("img");
+rockButton.src = "rock.png";
 rockButton.addEventListener("click", () => {
   if (scoreDiv.firstChild == playerScoreDiv) {
     outputDiv.innerText = playRound("rock", computerPlay());
   }
 });
 rockButton.innerText = "Rock";
-const paperButton = document.createElement("button");
+
+const paperButton = document.createElement("img");
+paperButton.src = "paper.png";
 paperButton.addEventListener("click", () => {
   if (scoreDiv.firstChild == playerScoreDiv) {
     outputDiv.innerText = playRound("paper", computerPlay());
   }
 });
 paperButton.innerText = "Paper";
-const scissorsButton = document.createElement("button");
+
+const scissorsButton = document.createElement("img");
+scissorsButton.src = "scissors.png";
 scissorsButton.addEventListener("click", () => {
   if (scoreDiv.firstChild == playerScoreDiv) {
     outputDiv.innerText = playRound("scissors", computerPlay());
