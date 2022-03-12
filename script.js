@@ -39,45 +39,65 @@ function playRound(playerSelection, computerSelection) {
   } else return "Invalid Selection!";
 }
 
-function game(){
-    for (let i = 0; i < 5; i++){
-        let playerChoice = prompt("Rock | Paper | Scissors?");
-        let computerChoice = computerPlay();
-        console.log(playRound(playerChoice,computerChoice))
-    }
-}
+function game() {}
+
+const rockButton = document.createElement("button");
+rockButton.addEventListener("click", () => {
+  outputDiv.innerText = playRound("rock", computerPlay());
+});
+rockButton.innerText = "Rock";
+const paperButton = document.createElement("button");
+paperButton.addEventListener("click", () => {
+  outputDiv.innerText = playRound("paper", computerPlay());
+});
+paperButton.innerText = "Paper";
+const scissorsButton = document.createElement("button");
+scissorsButton.addEventListener("click", () => {
+  outputDiv.innerText = playRound("scissors", computerPlay());
+});
+scissorsButton.innerText = "Scissors";
+
+const buttonContainer = document.createElement("div");
+buttonContainer.style.display = "flex";
+buttonContainer.style.justifyContent = "space-around";
+
+buttonContainer.append(rockButton, paperButton, scissorsButton);
+const body = document.querySelector("body");
+body.appendChild(buttonContainer);
+
+const outputDiv = document.createElement("div");
+outputDiv.style.fontSize = "40px";
+outputDiv.innerText = "Click a button to start";
+body.appendChild(outputDiv);
 
 function probability() {
-    let result = [];
-    let countScissors = 0;
-    let countPaper = 0;
-    let countRock = 0;
-  
-    for (let index = 0; index < 100000000; index++) {
-      result.push(computerPlay());
+  let result = [];
+  let countScissors = 0;
+  let countPaper = 0;
+  let countRock = 0;
+
+  for (let index = 0; index < 100000000; index++) {
+    result.push(computerPlay());
+  }
+
+  for (let index = 0; index < 100000000; index++) {
+    switch (result[index]) {
+      case "scissors":
+        countScissors++;
+        break;
+      case "paper":
+        countPaper++;
+        break;
+      case "rock":
+        countRock++;
+        break;
     }
-  
-    for (let index = 0; index < 100000000; index++) {
-      switch (result[index]) {
-        case "scissors":
-          countScissors++;
-          break;
-        case "paper":
-          countPaper++;
-          break;
-        case "rock":
-          countRock++;
-          break;
-      }
-    }
-    console.log(`The simulation ran for 100,000,000 iterations
+  }
+  console.log(`The simulation ran for 100,000,000 iterations
     Amount of Rocks: ${countRock}
     Amount of Papers: ${countPaper}
     Amount of Scissors: ${countScissors}
     `);
-  }
+}
 
 game();
-
-
-
