@@ -34,6 +34,9 @@ buttonContainer.style.justifyContent = "space-around";
 buttonContainer.append(rockButton, paperButton, scissorsButton);
 
 const body = document.querySelector("body");
+body.style.background = "url(background.jpg) no-repeat center center fixed";
+body.style.backgroundSize = "cover";
+body.style.color = "white";
 body.appendChild(buttonContainer);
 
 const outputDiv = document.createElement("div");
@@ -44,6 +47,7 @@ body.appendChild(outputDiv);
 
 const scoreDiv = document.createElement("div");
 scoreDiv.style.display = "flex";
+scoreDiv.style.flexWrap = "wrap";
 scoreDiv.style.justifyContent = "space-around";
 scoreDiv.style.fontSize = "60px";
 const playerScoreDiv = document.createElement("div");
@@ -133,6 +137,9 @@ function displayWinner(winner) {
 
   const playAgain = document.createElement("button");
   playAgain.innerText = "Again?";
+  playAgain.style.flexBasis = "100%";
+  playAgain.style.height = "100px";
+  playAgain.style.width = "40%";
   playAgain.addEventListener("click", () => {
     scoreDiv.replaceChildren(playerScoreDiv, computerScoreDiv);
   });
@@ -167,6 +174,4 @@ const probability = () => {
     Amount of Papers: ${countPaper}
     Amount of Scissors: ${countScissors}
     `);
-}
-
-game();
+};
