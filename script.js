@@ -39,14 +39,14 @@ computerScoreDiv.innerHTML = computerScore;
 scoreDiv.append(playerScoreDiv, computerScoreDiv);
 body.appendChild(scoreDiv);
 
-let computerPlay = function () {
+function computerPlay() {
   let decider = Math.random();
   if (decider < 1 / 3) {
     return "rock";
   } else if (decider < 2 / 3) {
     return "paper";
   } else return "scissors";
-};
+}
 
 function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
@@ -87,17 +87,42 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function playerWon() {
-  if (playerScore < 5) {
+  if (playerScore < 4) {
     playerScore++;
     playerScoreDiv.innerHTML = playerScore;
-  }
+  } else displayWinner("player");
 }
 
 function computerWon() {
-  if (computerScore < 5) {
+  if (computerScore < 4) {
     computerScore++;
     computerScoreDiv.innerHTML = computerScore;
+  } else displayWinner("computer");
+}
+
+function displayWinner(winner) {
+  scoreDiv.removeChild(playerScoreDiv);
+  scoreDiv.removeChild(computerScoreDiv);
+  playerScoreDiv.innerHTML = 0;
+  computerScoreDiv.innerHTML = 0;
+  playerScore = 0;
+  computerScore = 0;
+  if (winner == "player") {
+    const youWon = document.createElement("div");
+    youWon.innerText = "Congratulations, you beat the computer!";
+    scoreDiv.appendChild(youWon);
+  } else {
+    const youLost = document.createElement("div");
+    youLost.innerText = "Oh no, humanity has lost its battle against Robots!";
+    scoreDiv.appendChild(youLost);
   }
+
+  const playAgain = document.createElement("button");
+  playAgain.innerText = "Again?";
+  playAgain.addEventListener("click", () => {
+    scoreDiv.replaceChildren(playerScoreDiv, computerScoreDiv);
+  });
+  scoreDiv.appendChild(playAgain);
 }
 
 function game() {}
