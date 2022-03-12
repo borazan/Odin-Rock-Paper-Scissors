@@ -3,17 +3,23 @@ var computerScore = 0;
 
 const rockButton = document.createElement("button");
 rockButton.addEventListener("click", () => {
-  outputDiv.innerText = playRound("rock", computerPlay());
+  if (scoreDiv.firstChild == playerScoreDiv) {
+    outputDiv.innerText = playRound("rock", computerPlay());
+  }
 });
 rockButton.innerText = "Rock";
 const paperButton = document.createElement("button");
 paperButton.addEventListener("click", () => {
-  outputDiv.innerText = playRound("paper", computerPlay());
+  if (scoreDiv.firstChild == playerScoreDiv) {
+    outputDiv.innerText = playRound("paper", computerPlay());
+  }
 });
 paperButton.innerText = "Paper";
 const scissorsButton = document.createElement("button");
 scissorsButton.addEventListener("click", () => {
-  outputDiv.innerText = playRound("scissors", computerPlay());
+  if (scoreDiv.firstChild == playerScoreDiv) {
+    outputDiv.innerText = playRound("scissors", computerPlay());
+  }
 });
 scissorsButton.innerText = "Scissors";
 
